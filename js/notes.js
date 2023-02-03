@@ -1,15 +1,6 @@
 window.addEventListener('load', () => {
-    document.querySelector("#add").addEventListener("click", () => {
-       showForm();
-    });
 });
 
-/*function showForm()
-{
-    document.querySelector(".create_edit_note").classList.remove("create_edit_note-hidden");
-} */
-
-});
 
 function Note(titre, contenu) {
     this.titre = titre;
@@ -40,6 +31,7 @@ let NoteViewProto = {
 }
 
 NoteView.prototype = NoteViewProto;
+
 let noteFormView = {
     display : function () {
         document.querySelector(".create_edit_note").classList.remove("create_edit_note-hidden");
