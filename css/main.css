@@ -1,0 +1,157 @@
+:root{
+    --light-border: #919191;
+
+    --dark-bg: #212121;
+    --dark-bg2: #292A30;
+
+    --gradient : linear-gradient(#2F2F2F 0%, rgba(47, 47, 47, 0) 100%);
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+    background-color: #212121;
+
+    font-family: Montserrat, sans-serif;
+    color: white;
+}
+
+nav {
+    width: 100%;
+    height: 4rem;
+    flex-grow: 0;
+    border-bottom: 1px solid #919191;
+}
+
+.gradient {
+    background: linear-gradient(#2F2F2F 0%, rgba(47, 47, 47, 0) 100%);
+}
+
+.noteapp_menu {
+    margin: auto auto auto 3em;
+
+    padding: 0;
+
+    height: 100%;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.noteapp_menu li {
+    margin: 0 2em;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    width: 8%;
+    height: 45%;
+
+    list-style: none;
+    text-transform: capitalize;
+
+    background-color: transparent;
+    border: 1px solid #919191;
+    border-radius: 10px;
+}
+
+.noteapp_menu li:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
+
+.noteapp_content {
+    flex-grow: 1;
+    border-bottom: 1px solid #919191;
+    display: flex;
+    flex-direction: row;
+}
+
+.note_list {
+    flex-basis: 15%;
+    flex-grow: 0;
+    border-right: 1px solid #919191;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+.note_list_item {
+    color: gainsboro;
+    flex-basis: 2rem;
+    flex-grow: 0;
+    flex-shrink: 0;
+    border-bottom: 1px solid black;
+    padding: 0.5rem;
+}
+
+.note_list_item:hover {
+    color: white;
+}
+
+.note_list_item-selected {
+    background-color: gainsboro;
+    color: dimgrey;
+}
+
+.main_note {
+    padding: 1rem;
+    flex-grow: 1;
+}
+
+.create_edit_note {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.create_edit_note-hidden {
+    display: none;
+}
+
+#form_add_note_title {
+    padding: 0 1em;
+
+    height: 1.7em;
+
+    border: 1px solid #919191;
+    border-radius: 5px;
+
+    color: gray;
+}
+
+.create_edit_note textarea {
+    margin: 1em 0;
+
+    height: 20rem;
+
+    border-color: #919191;
+    background-color: #292A30;
+    color: lightgray;
+
+    font-family: "Segoe UI", sans-serif;
+}
+
+.create_edit_note button {
+    height: 2em;
+
+    border-color: #919191;
+    border-radius: 5px;
+
+    color: white;
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    text-transform: capitalize;
+}
+
+.create_edit_note button:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+}
