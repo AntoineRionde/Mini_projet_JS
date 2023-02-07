@@ -3,28 +3,33 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Notes.app</title>
-<!--        <link rel="stylesheet" href="css/notes.css"/>-->
-    <link rel="stylesheet" href="css/main.css"/>
     <link rel="stylesheet" href="css/darkmode.css"/>
-
+    <link rel="stylesheet" href="css/main.css"/>
     <script src="js/showdown.js" defer></script>
     <script src="js/notes.js" defer></script>
+   <script src="js/theme.js" defer></script>
 </head>
-<body>
-<nav class="gradient">
+<body class="">
+<nav>
     <ul class="noteapp_menu">
         <li id="add">+</li>
         <li id="edit">edit</li>
         <li id="del">del</li>
     </ul>
+    <div class="noteapp_mode">
+        <label class="switch">
+            <input type="checkbox" id="darkmode">
+            <span class="slider round"></span>
+        </label>
+    </div>
 </nav>
 
 <div class="noteapp_content">
 
-    <section class="note_list gradient" id="noteListMenu"></section>
+    <section class="note_list" id="noteListMenu"></section>
 
     <section class="main_note">
-        <div class="create_edit_note  create_edit_note-hidden" id="noteForm">
+        <div class="create_edit_note " id="noteForm">
             <input
                     class="gradient"
                     id="form_add_note_title"
@@ -32,7 +37,7 @@
                     placeholder="Titre de la note"
                     required
             />
-            <textarea id="form_add_note_text">contenu de la note</textarea>
+            <textarea id="form_add_note_text" placeholder="contenu de la note"></textarea>
             <button id="form_add_note_valid" class="gradient">valider</button>
         </div>
 
