@@ -1,41 +1,42 @@
-body{
+body.dark{
     background-color: var(--dark-bg);
     color: white;
 }
 
-nav{
+.dark nav{
     border-color: var(--light-border);
 }
 
-.gradient{
+.dark .gradient{
     background: var(--gradient);
 }
 
-#noteapp_menu li{
+
+.dark li{
     border-color: var(--light-border);
 }
 
-.noteapp_content{
+.dark .noteapp_content{
     border-color: var(--light-border);
 }
 
-.note_list{
+.dark .note_list{
     border-color: var(--light-border);
     color: white;
 }
 
-#form_add_note_title{
+.dark #form_add_note_title{
     border-color: var(--light-border);
     color: lightgray;
 }
 
-.create_edit_note textarea{
+.dark .create_edit_note textarea{
     background-color: var(--dark-bg2);
     border-color: var(--light-border);
     color: lightgray;
 }
 
-.create_edit_note button{
+.dark .create_edit_note button{
     border-color: var(--light-border);
     color: lightgray;
 }
