@@ -1,7 +1,6 @@
 window.addEventListener('load', () => {
-    mainMenuView.init();
+    GlobalNoteView.init();
     console.log("load");
-
 });
 
 class Note {
@@ -34,6 +33,25 @@ class NoteView {
     }
 }
 
+class NoteList {
+    constructor() {
+        this.liste = [];
+    }
+
+    addNote(note) {
+        this.liste.push(note);
+        return this.liste.length - 1;
+    }
+
+    getNoteById(i) {
+        return this.liste[i];
+    }
+
+    getListe() {
+        return this.liste;
+    }
+}
+
 let noteFormView = {
     display: function () {
         document.querySelector(".create_edit_note").classList.remove("create_edit_note-hidden");
@@ -42,31 +60,45 @@ let noteFormView = {
         document.querySelector(".create_edit_note").classList.add("create_edit_note-hidden");
     },
     validate: function () {
-        document.querySelector("#form_add_note_valid").addEventListener("click", () => {
-            let titre = document.querySelector("#form_add_note_title").textContent;
-            let contenu = document.querySelector("#form_add_note_text").textContent;
-            //let note= new Note(titre, contenu);
-            // la stocke dans la variable partagée
-            // l'affiche en créant objet noteView
-        });
+            let contenu = document.querySelector("#form_add_note_text").value;
+            let titre = document.querySelector("#form_add_note_title").value;
+            const note = new Note(titre, contenu); 
+            let noteView = new NoteView(note);
+            noteView.afficher();
     }
 }
 
 let mainMenuView = {
     addHandler: function () {
-        document.querySelector("#add").addEventListener("click", () => {
-            noteFormView.display();
-            console.log("add");
-        });
-        document.querySelector("#edit").addEventListener("click", () => {
-            console.log("edit");
-        });
-        document.querySelector("#del").addEventListener("click", () => {
-            console.log("delete");
-            noteFormView.hide();
-        });
+         noteFormView.display();
+    },
+    validateHandler: function () {
+        console.log("validate");
+        noteFormView.validate();
     },
     init: function () {
-        this.addHandler();
+        document.querySelector("#add").addEventListener("click", this.addHandler);
+        document.querySelector("#form_add_note_valid").addEventListener("click", this.validateHandler);
+    }
+}
+
+let GlobalNoteView = {
+    noteCourante: new Note,
+    NoteListe : new NoteList,
+    indexNoteCourante: 0,
+    
+    
+    init: function () {
+        mainMenuView.init();
+    }
+}
+
+let noteListMenuView = {
+    displayItem(note) {
+        let div = document.querySelector('section.note_list');
+        let item = document.createElement('div');
+        item.classList.add('note_list_item');
+        item.innerHTML = note.titre + " " + note.date;
+        div.appendChild(item);
     }
 }
