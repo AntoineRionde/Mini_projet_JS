@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Notes.app</title>
+    <link rel="stylesheet" href="css/notes.css"/>
     <link rel="stylesheet" href="css/darkmode.css"/>
-    <link rel="stylesheet" href="css/main.css"/>
     <script src="js/showdown.js" defer></script>
     <script src="js/notes.js" defer></script>
    <script src="js/theme.js" defer></script>
@@ -19,7 +19,6 @@
     <div class="noteapp_mode">
         <label class="switch">
             <input type="checkbox" id="darkmode">
-            <span class="slider round"></span>
         </label>
     </div>
 </nav>
@@ -29,7 +28,7 @@
     <section class="note_list" id="noteListMenu"></section>
 
     <section class="main_note">
-        <div class="create_edit_note " id="noteForm">
+        <div class="create_edit_note create_edit_note-hidden" id="noteForm">
             <input
                     class="gradient"
                     id="form_add_note_title"
@@ -37,7 +36,7 @@
                     placeholder="Titre de la note"
                     required
             />
-            <textarea id="form_add_note_text" placeholder="contenu de la note"></textarea>
+            <textarea id="form_add_note_text" placeholder="Contenu de la note"></textarea>
             <button id="form_add_note_valid" class="gradient">valider</button>
         </div>
 
