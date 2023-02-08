@@ -9,9 +9,11 @@ class Note {
         this.contenu = contenu;
         this.date = new Date();
     }
+
     setTitre(titre) {
         this.titre = titre;
     }
+
     setContenu(contenu) {
         this.contenu = contenu;
     }
@@ -28,8 +30,17 @@ class NoteView {
     }
 
     afficher() {
-        let div = document.querySelector('div#currentNoteView');
+        NoteView.visualiserClasse(true);
+        let div = document.querySelector('#currentNoteView');
         div.innerHTML = this.renderHTML();
+    }
+
+    static visualiserClasse(bool) {
+        let div = document.querySelector('#currentNoteView');
+        if (!div.classList.contains('current_note') && bool)
+            div.classList.add('current_note');
+        else if (div.classList.contains('current_note') && !bool)
+            div.classList.remove('current_note');
     }
 }
 
@@ -58,19 +69,22 @@ let noteFormView = {
     },
     hide: function () {
         document.querySelector(".create_edit_note").classList.add("create_edit_note-hidden");
+        NoteView.visualiserClasse(false);
+        clearInput();
     },
     validate: function () {
-            let contenu = document.querySelector("#form_add_note_text").value;
-            let titre = document.querySelector("#form_add_note_title").value;
-            const note = new Note(titre, contenu); 
-            let noteView = new NoteView(note);
-            noteView.afficher();
+        let contenu = document.querySelector("#form_add_note_text").value;
+        let titre = document.querySelector("#form_add_note_title").value;
+        const note = new Note(titre, contenu);
+        let noteView = new NoteView(note);
+        noteView.afficher();
     }
 }
 
 let mainMenuView = {
     addHandler: function () {
-         noteFormView.display();
+        noteFormView.display();
+        allowedMenu();
     },
     validateHandler: function () {
         console.log("validate");
@@ -79,18 +93,22 @@ let mainMenuView = {
     init: function () {
         document.querySelector("#add").addEventListener("click", this.addHandler);
         document.querySelector("#form_add_note_valid").addEventListener("click", this.validateHandler);
+        document.querySelector("#del").addEventListener("click", noteFormView.hide);
     }
 }
 
 let GlobalNoteView = {
     noteCourante: new Note,
-    NoteListe : new NoteList,
+    NoteListe: new NoteList,
     indexNoteCourante: 0,
-    
-    
+
+
     init: function () {
         mainMenuView.init();
+        clearInput();
+        notAllowed();
     }
+
 }
 
 let noteListMenuView = {
@@ -101,4 +119,24 @@ let noteListMenuView = {
         item.innerHTML = note.titre + " " + note.date;
         div.appendChild(item);
     }
+}
+
+function clearInput() {
+    document.querySelector("#form_add_note_text").value = "";
+    document.querySelector("#form_add_note_title").value = "";
+}
+
+function notAllowed() {
+    document.querySelector("#edit").style.cursor = "not-allowed";
+    document.querySelector("#del").style.cursor = "not-allowed";
+    //document.querySelector("#form_add_note_valid").style.cursor = "not-allowed";
+}
+
+function allowedMenu() {
+    document.querySelector("#edit").style.cursor = "pointer";
+    document.querySelector("#del").style.cursor = "pointer";
+}
+
+function allowedValidate() {
+    document.querySelector("#form_add_note_valid").style.cursor = "pointer";
 }
