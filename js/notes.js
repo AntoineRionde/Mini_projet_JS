@@ -99,6 +99,7 @@ let noteFormView = {
         let note = GlobalNoteView.NoteListe.getNoteById(id);
         GlobalNoteView.noteCourante = note;
         GlobalNoteView.indexNoteCourante = id;
+        GlobalNoteView.changeContent();
         let noteView = new NoteView(note);
         
         noteView.afficher();
@@ -131,6 +132,11 @@ let GlobalNoteView = {
         mainMenuView.init();
         clearInput();
         notAllowed();
+    },
+    
+    changeContent : function(){
+        document.querySelector("#form_add_note_text").value = GlobalNoteView.noteCourante.contenu;
+        document.querySelector("#form_add_note_title").value = GlobalNoteView.noteCourante.titre;
     }
 
 }
@@ -140,7 +146,7 @@ let noteListMenuView = {
         let div = document.querySelector('section.note_list');
         let item = document.createElement('div');
         item.classList.add('note_list_item');
-        item.innerHTML = note.titre + " " + note.date;
+        item.innerHTML = note.titre + " " + note.date.getDay() + "/" + note.date.getMonth() + "/" + note.date.getFullYear();
         div.appendChild(item);
     }
 }
