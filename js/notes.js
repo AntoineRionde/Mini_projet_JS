@@ -48,6 +48,7 @@ class NoteView {
 class NoteList {
     constructor() {
         this.liste = [];
+        this.index = 0;
     }
 
     addNote(note) {
@@ -63,19 +64,11 @@ class NoteList {
     getListe() {
         return this.liste;
     }
-
-    /* • ajouter dans la classe NoteList la méthode save() qui enregistre la liste dans le
-localStorage. On utilise une clé unique dont la valeur sera le tableau de notes sérialisé. */
+    
     save() {
         let value = JSON.stringify(this.liste);
-        localStorage.setItem("liste", value);
-
-    }
-
-    save()
-    {
-        let value = JSON.stringify(this.liste);
-        localStorage.setItem(GlobalNoteView.indexNoteCourante, value);
+        localStorage.setItem(this.index, value);
+        this.index =+ 1;
     }
 
     load()
