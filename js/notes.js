@@ -1,5 +1,6 @@
 window.addEventListener('load', () => {
     GlobalNoteView.init();
+    NoteList.prototype.load();
     console.log("load");
 });
 
@@ -51,6 +52,7 @@ class NoteList {
 
     addNote(note) {
         this.liste.push(note);
+        this.save();
         return this.liste.length - 1;
     }
 
@@ -60,6 +62,44 @@ class NoteList {
 
     getListe() {
         return this.liste;
+    }
+
+    /* • ajouter dans la classe NoteList la méthode save() qui enregistre la liste dans le
+localStorage. On utilise une clé unique dont la valeur sera le tableau de notes sérialisé. */
+    save() {
+        let value = JSON.stringify(this.liste);
+        localStorage.setItem("liste", value);
+
+    }
+
+    save()
+    {
+        let value = JSON.stringify(this.liste);
+        localStorage.setItem(GlobalNoteView.indexNoteCourante, value);
+    }
+
+    load()
+    {
+        let v = localStorage.getItem(this.liste);
+        this.liste = JSON.parse(v);
+    }
+
+    deleteNote(note)
+    {
+        let index = this.liste.indexOf(note);
+        if (index > -1) {
+            this.liste.splice(index, 1);
+        }
+    }
+
+    /* ajouter une méthode pour modifier un élément de la liste de note (classe NoteList). La
+méthode reçoit l'indice de la note modifiée et la nouvelle valeur. Penser à sauvegarder la
+liste dans le localStorage
+     */
+    modifNote(index, newValue)
+    {
+        this.liste.at(index).value = newValue;
+        this.save();
     }
 }
 
