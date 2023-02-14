@@ -75,8 +75,7 @@ let noteFormView = {
     validate: function () {
         let contenu = document.querySelector("#form_add_note_text").value;
         let titre = document.querySelector("#form_add_note_title").value;
-        const note = new Note(titre, contenu);
-        let noteView = new NoteView(note);
+        let noteView = new NoteView(new Note(titre, contenu));
         noteView.afficher();
     }
 }
