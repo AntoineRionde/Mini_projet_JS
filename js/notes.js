@@ -48,7 +48,6 @@ class NoteView {
 class NoteList {
     constructor() {
         this.liste = [];
-        this.index = 0;
     }
 
     addNote(note) {
@@ -64,16 +63,20 @@ class NoteList {
     getListe() {
         return this.liste;
     }
-    
+
+    getIndex()
+    {
+        return this.index;
+    }
+
     save() {
         let value = JSON.stringify(this.liste);
-        localStorage.setItem(this.index, value);
-        this.index =+ 1;
+        localStorage.setItem(GlobalNoteView.indexNoteCourante, value);
     }
 
     load()
     {
-        let v = localStorage.getItem(this.liste);
+        let v = localStorage.getItem(GlobalNoteView.indexNoteCourante);
         this.liste = JSON.parse(v);
     }
 
