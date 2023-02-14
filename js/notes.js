@@ -20,13 +20,13 @@ class Note {
 }
 
 class NoteView {
-    constructor(Note) {
-        this.Note = Note;
+    constructor(note) {
+        this.note = note;
     }
 
     renderHTML() {
         let conv = new showdown.Converter();
-        return conv.makeHtml(this.Note.contenu);
+        return conv.makeHtml(this.note.contenu);
     }
 
     afficher() {
@@ -76,6 +76,31 @@ let noteFormView = {
         let contenu = document.querySelector("#form_add_note_text").value;
         let titre = document.querySelector("#form_add_note_title").value;
         let noteView = new NoteView(new Note(titre, contenu));
+        noteView.afficher();
+        noteListMenuView.displayItem(noteView.note);
+        GlobalNoteView.NoteListe.addNote(noteView.note);
+        this.init();
+    },
+
+    init: function () {
+        document.querySelector("#noteListMenu").addEventListener("click", this.handler);
+    },
+
+    handler: function (e) {
+        let id = function (e) {
+            let id = 0;
+            while (e.previousSibling) {
+                e = e.previousSibling;
+                id++;
+            }
+            return id;
+        }(e.target);
+        
+        let note = GlobalNoteView.NoteListe.getNoteById(id);
+        GlobalNoteView.noteCourante = note;
+        GlobalNoteView.indexNoteCourante = id;
+        let noteView = new NoteView(note);
+        
         noteView.afficher();
     }
 }
