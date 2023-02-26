@@ -18,7 +18,7 @@
     </ul>
     <div class="noteapp_mode">
         <label class="switch">
-            <input type="checkbox" id="darkmode">
+            <input type="button" id="darkmode" value="Dark Mode">
         </label>
     </div>
 </nav>
@@ -30,14 +30,13 @@
     <section class="main_note">
         <div class="create_edit_note create_edit_note-hidden" id="noteForm">
             <input
-                    class="gradient"
                     id="form_add_note_title"
                     type="text"
                     placeholder="Titre de la note"
                     required
             />
             <textarea id="form_add_note_text" placeholder="Contenu de la note"></textarea>
-            <button id="form_add_note_valid" class="gradient">valider</button>
+            <button id="form_add_note_valid">valider</button>
         </div>
 
         <div class="" id="currentNoteView"></div>
