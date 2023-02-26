@@ -1,33 +1,34 @@
 const body = document.querySelector('body');
 
+// Récupération du thème dans le localStorage
 window.addEventListener('load', () => {
-    clearCheckboxes();
-    SwitchThemeView.init();
+    if (localStorage.getItem('dark') === 'true') {
+        darkTheme(true);
+        document.querySelector('#darkmode').value = 'Light Mode';
+    } else {
+        darkTheme(false);
+        document.querySelector('#darkmode').value = 'Dark Mode';
+    }
 });
 
+// Changement du thème et sauvegarde dans le localStorage
+document.querySelector('#darkmode').addEventListener('click', () => {
+    if (localStorage.getItem('dark') === 'true') {
+        localStorage.setItem('dark', 'false');
+        darkTheme(false);
+        document.querySelector('#darkmode').value = 'Dark Mode';
+    } else {
+        localStorage.setItem('dark', 'true');
+        darkTheme(true);
+        document.querySelector('#darkmode').value = 'Light Mode';
+    }
+});
+
+// Fonction pour changer le thème
 function darkTheme(dark) {
     if (dark === true) {
         body.classList.add('dark');
     } else {
         body.classList.remove('dark');
     }
-}
-
-let SwitchThemeView = {
-    init: function () {
-        let button = document.querySelector('#darkmode');
-        button.addEventListener('click', () => {
-            if (button.checked)
-                darkTheme(true);
-            else darkTheme(false);
-
-        });
-    }
-}
-
-function clearCheckboxes() {
-    let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-    checkboxes.forEach((checkbox) => {
-        checkbox.checked = false;
-    });
 }

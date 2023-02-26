@@ -28,6 +28,7 @@ body.dark{
 .dark #form_add_note_title{
     border-color: var(--light-border);
     color: lightgray;
+    background-color: var(--dark-bg2);
 }
 
 .dark .create_edit_note textarea{
@@ -39,4 +40,33 @@ body.dark{
 .dark .create_edit_note button{
     border-color: var(--light-border);
     color: lightgray;
+    background-color: var(--dark-bg2);
+}
+
+.dark #darkmode{
+    border: white 1px solid;
+    color: white;
+}
+
+.dark .note_list_item{
+    border-color: var(--light-border);
+    color: white;
+}
+
+.dark .note_list_item:hover{
+    background-color: var(--dark-bg2);
+}
+
+.dark .note_list_item-selected{
+    background-color: var(--dark-selected);
+    color: white;
+}
+
+#darkmode {
+    margin-right: 3em;
+    padding: 0.5em 1em;
+    height: 100%;
+    border: black 1px solid;
+    border-radius: 15px;
+    background-color: transparent;
 }
